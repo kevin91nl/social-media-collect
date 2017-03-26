@@ -49,7 +49,7 @@ def fetch_by_users(writer, input_path):
             new_tweets = api.user_timeline(screen_name=user, count=200, max_id=oldest)
             all_tweets.extend(new_tweets)
             oldest = all_tweets[-1].id - 1
-            print("%s tweets downloaded so far %s..." % (len(all_tweets), user))
+            print("%s tweets downloaded so far..." % (len(all_tweets)))
     for tweet in all_tweets:
         writer.write(tweet)
 
