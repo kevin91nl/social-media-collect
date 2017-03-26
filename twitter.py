@@ -45,7 +45,7 @@ if __name__ == '__main__':
               'source_url', 'text', 'truncated']
     print('Collecting Tweets using data from %s (and configuration from %s)...' % (args.input, args.ini))
     with open(args.output, 'w') as output_file:
-        writer = csv.DictWriter(output_file, fieldnames=fields)
+        writer = csv.DictWriter(output_file, fieldnames=fields, delimiter='\t')
         writer.writeheader()
         for step, tweet_chunk in enumerate(tweet_chunks):
             print('Collecting bulk of %d Tweets (bulk %d out of %d)...' % (TWEETS_PER_REQUEST, step + 1, len(tweet_chunks)))
