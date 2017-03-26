@@ -37,8 +37,45 @@ The structure should look like the following:
 ## Usage
 
 ### Twitter
-First, specify the configuration INI file. Then, specify the path to the file containing Tweet IDs. The last argument is the path to the file in which the output of the script is stored. Example usage:
+First, specify the configuration INI file. The second argument is the path to the file in which the output of the script is stored. This argument is followed by an action and corresponding arguments. Example usage:
 
 ```
-python twitter.py settings.ini data/twitter.txt data/tweets.csv
+python twitter.py settings.ini data/tweets.csv fetch_by_ids data/twitter.txt
 ```
+
+#### Action fetch_by_ids
+This action fetches Tweets using a list of Tweet identifiers. Example usage:
+
+```
+python twitter.py settings.ini data/tweets.csv fetch_by_ids data/ids.txt
+```
+
+With the following content for `data/ids.txt`:
+
+```
+2017-02-28T12:07:16.000+01:00	836533221454131200	801374496548589569
+2017-02-28T06:07:16.000+01:00	836442621753114624	801374496548589569
+2017-02-11T17:54:13.000+01:00	830459940259164163	801374496548589569
+2017-02-11T04:36:23.000+01:00	830259157282480128	801374496548589569
+2017-02-16T22:40:01.000+01:00	832343804799832064	3111247474
+```
+
+#### Action fetch_by_users
+This action fetches Tweets by specifying a file containing Twitter usernames per line. Example usage:
+
+```
+python twitter.py settings.ini data/tweets.csv fetch_by_users data/users.txt
+```
+
+With the following content for `data/users.txt`:
+
+```
+APechtold
+geertwilderspvv
+```
+
+#### Options
+
+The following options can be set:
+
+ - `delimiter`: The delimiter used in the output CSV file. Example usage: `python twitter.py settings.ini data/tweets.csv fetch_by_users data/users.txt --delimiter ,`. The default delimiter is `\t`.
